@@ -52,7 +52,7 @@ const perguntas = [
     {
     text: "Qual é nosso sonho?",
     options: ["Ir de bike para a Alemanha", "Se casar", "Pular corda bem rápido", "sonho de padaria"],
-    correctIndex: 2
+    correctIndex: 1
     },
 ];
 
