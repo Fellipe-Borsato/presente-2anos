@@ -1,56 +1,69 @@
-* {
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffe6f0, #ffe0e6);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background: #ffe6f0;
-  color: #b30059;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 20px;
+  color: #4b0049;
 }
 
 .container {
-  max-width: 480px;
-  width: 100%;
-  background: #fff0f6;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(179, 0, 89, 0.3);
+  max-width: 600px;
+  margin: 60px auto;
+  background-color: #fff0f5;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
   text-align: center;
 }
 
 h1 {
-  margin-bottom: 20px;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.intro {
+  font-style: italic;
+  margin-bottom: 25px;
 }
 
 nav button {
-  background: #b30059;
-  border: none;
+  background-color: #ff66a3;
   color: white;
-  font-size: 1.1rem;
+  border: none;
   padding: 12px 20px;
-  margin: 5px;
-  border-radius: 10px;
+  margin: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s;
+  font-size: 1em;
 }
 
 nav button:hover {
-  background: #e60073;
+  background-color: #ff3385;
 }
 
-#conteudo {
-  margin-top: 25px;
-  min-height: 300px;
-  background: #ffd6e8;
+#conteudo h2 {
+  margin-top: 20px;
+  color: #b30059;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li button {
+  background-color: #ffcce0;
+  border: none;
+  padding: 10px 16px;
+  margin: 6px;
   border-radius: 10px;
-  padding: 15px;
-  box-shadow: inset 0 0 10px #b30059aa;
-  overflow-y: auto;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  max-width: 300px;
+}
+
+ul li button:hover {
+  background-color: #ffb3d1;
 }
