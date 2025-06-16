@@ -100,19 +100,129 @@ function iniciarQuiz() {
   pontuacao = 0;
   mostrarPergunta();
 }
+//--------------------------------------------------------------------------------------------
 
-btnMemoria.addEventListener('click', () => {
-  conteudo.innerHTML = `
-    <h2>🧠 Jogo da Memória</h2>
-    <p>Jogo da memoória com fotos</p>
-  `;
-});
+function iniciarJogoMemoria() {
+  const imagens = [];
+  for (let i = 1; i <= 10; i++) {
+    imagens.push(`img/img${i}.jpg`);
+  }
+
+  // Duplica e embaralha as imagens
+  const cartas = embaralhar([...imagens, ...imagens]);
+
+  conteudo.innerHTML = '<div id="tabuleiro-memoria" class="tabuleiro"></div>';
+  const tabuleiro = document.getElementById('tabuleiro-memoria');
+
+  cartas.forEach((src, index) => {
+    const carta = document.createElement('div');
+    carta.classList.add('carta');
+    carta.dataset.index = index;
+    carta.dataset.src = src;
+    carta.innerHTML = `
+      <img class="frente" src="${src}" />
+      <img class="verso" src="img/verso.jpg" />
+    `;
+    tabuleiro.appendChild(carta);
+  });
+
+  configurarEventosMemoria();
+}
+
+function embaralhar(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function configurarEventosMemoria() {
+  let primeira = null;
+  let segunda = null;
+  let travado = false;
+
+  document.querySelectorAll('.carta').forEach(carta => {
+    carta.addEventListener('click', () => {
+      if (travado || carta.classList.contains('virada')) return;
+
+      carta.classList.add('virada');
+
+      if (!primeira) {
+        primeira = carta;
+      } else {
+        segunda = carta;
+        travado = true;
+
+        if (primeira.dataset.src === segunda.dataset.src) {
+          // Acertou
+          primeira = null;
+          segunda = null;
+          travado = false;
+        } else {
+          // Errou
+          setTimeout(() => {
+            primeira.classList.remove('virada');
+            segunda.classList.remove('virada');
+            primeira = null;
+            segunda = null;
+            travado = false;
+          }, 1000);
+        }
+      }
+    });
+  });
+}
+
+
+//--------------------------------------------------------------------------------------------
+btnMemoria.addEventListener('click', iniciarJogoMemoria);
 
 btnQuiz.addEventListener('click', iniciarQuiz);
 
 btnCartinha.addEventListener('click', () => {
-  conteudo.innerHTML = `
-    <h2>📜 Cartinha Interativa</h2>
-    <p>Cartinha hihihi</p>
+  conteudo.innerHTML = 
+   conteudo.innerHTML = `
+    <h2>📜 Cartinha</h2>
+    <div id="cartinha" style="text-align: left; margin-top: 20px; font-size: 1.2em;"></div>
+    <div id="final-coracao" style="text-align: center; font-size: 2em; margin-top: 20px;"></div>
   `;
+
+  const frases = [
+    "Oi amorzinho 💖",
+    "Hoje completamos 2 anos juntos...",
+    "E cada dia ao seu lado é um presente.",
+    "Você me faz sorrir nos dias bons e nos dias difíceis também.",
+    "Te ver feliz é meu maior objetivo.",
+    "Obrigado por me escolher todos os dias.",
+    "Por me apoiar, me ouvir, me amar.",
+    "Eu quero viver tantos e tantos anos com você ainda.",
+    "Com nossas aventuras, filmes, sonhos e até besteiras.",
+    "Te amo com todo meu coração. ❤️"
+  ];
+
+  const cartinha = document.getElementById("cartinha");
+  let fraseIndex = 0;
+
+  function escreverFrase(frase, i = 0) {
+    if (i < frase.length) {
+      cartinha.innerHTML += frase.charAt(i);
+      setTimeout(() => escreverFrase(frase, i + 1), 40);
+    } else {
+      cartinha.innerHTML += "<br><br>";
+      fraseIndex++;
+      if (fraseIndex < frases.length) {
+        setTimeout(() => escreverFrase(frases[fraseIndex]), 700);
+      } else {
+        mostrarCoracaoFinal();
+      }
+    }
+  }
+
+  function mostrarCoracaoFinal() {
+    const coracao = document.getElementById("final-coracao");
+    coracao.innerHTML = "💘";
+    setInterval(() => {
+      coracao.style.opacity = coracao.style.opacity === "0" ? "1" : "0";
+    }, 500);
+  }
+
+  escreverFrase(frases[fraseIndex]);
+  ;
 });
