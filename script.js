@@ -104,7 +104,7 @@ function iniciarQuiz() {
 btnMemoria.addEventListener('click', () => {
   conteudo.innerHTML = `
     <h2>🧠 Jogo da Memória</h2>
-    <p>Em breve aqui vai um jogo com fotos e corações para você encontrar os pares! ❤️</p>
+    <p>Jogo da memoória com fotos</p>
   `;
 });
 
@@ -113,6 +113,6 @@ btnQuiz.addEventListener('click', iniciarQuiz);
 btnCartinha.addEventListener('click', () => {
   conteudo.innerHTML = `
     <h2>📜 Cartinha Interativa</h2>
-    <p>Um texto especial com animações românticas vai aparecer aqui! 💖</p>
+    <p>Cartinha hihihi</p>
   `;
 });
