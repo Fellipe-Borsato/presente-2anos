@@ -185,7 +185,7 @@ btnCartinha.addEventListener('click', () => {
   `;
 
   const frases = [
-    "Oi amorzinho 💖",
+    "Oi amoreca 💖",
     "Hoje completamos 2 anos juntos...",
     "E cada dia ao seu lado é um presente.",
     "Você me faz sorrir nos dias bons e nos dias difíceis também.",
