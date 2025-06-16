@@ -27,7 +27,7 @@ const perguntas = [
     {
     text: "Quantos dias tem nosso foguinho?",
     options: ["121", "206", "119", "125"],
-    correctIndex: 0
+    correctIndex: 2
     },
     {
     text: "Melhor filme que assitimos Juntos?",
